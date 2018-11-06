@@ -1,12 +1,16 @@
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
+#include <fstream>
 
-using namespace std;
+//I have always been told never to use namespace std. They say
+//take only what you need.
 
-string GetStdoutFromCommand(string cmd) {
+//using namespace std;
 
-string data;
+std::string GetStdoutFromCommand(std::string cmd) {
+
+	std::string data;
 FILE * stream;
 const int max_buffer = 256;
 char buffer[max_buffer];
@@ -22,10 +26,20 @@ return data;
 }
 
 int main (){
+	std::ofstream ofile;
 
-string ls = GetStdoutFromCommand("cat /proc/cpuinfo");
+	std::string ls = GetStdoutFromCommand("cat /proc/cpuinfo");
 
-cout << "Here's cpu info: " << ls << endl;
+	ofile.open("CPU_info.txt");
+	if(ofile.is_open()){
+		ofile << "Here's cpu info: " << std::endl << ls << std::endl;;
+	}
+	else{
+		std::cout << "Unable to openfile" << std::endl;
+	}
+	ofile.close();
+
+	//std::cout << "Here's cpu info: " << std::endl << ls << std::endl;
 
 return 0;
 }
