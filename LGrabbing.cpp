@@ -32,6 +32,7 @@ int main (){
 
 	ofile.open("CPU_info.txt");
 	if(ofile.is_open()){
+		std::cout << "Sending CPU info to file..." << std::endl;
 		ofile << "Here's cpu info: " << std::endl << ls << std::endl;;
 	}
 	else{

@@ -6,7 +6,7 @@ model		: 142
 model name	: Intel(R) Core(TM) i7-7500U CPU @ 2.70GHz
 stepping	: 9
 microcode	: 0x8e
-cpu MHz		: 2895.974
+cpu MHz		: 600.009
 cache size	: 4096 KB
 physical id	: 0
 siblings	: 4
@@ -33,7 +33,7 @@ model		: 142
 model name	: Intel(R) Core(TM) i7-7500U CPU @ 2.70GHz
 stepping	: 9
 microcode	: 0x8e
-cpu MHz		: 2864.434
+cpu MHz		: 600.007
 cache size	: 4096 KB
 physical id	: 0
 siblings	: 4
@@ -60,7 +60,7 @@ model		: 142
 model name	: Intel(R) Core(TM) i7-7500U CPU @ 2.70GHz
 stepping	: 9
 microcode	: 0x8e
-cpu MHz		: 2893.875
+cpu MHz		: 600.016
 cache size	: 4096 KB
 physical id	: 0
 siblings	: 4
@@ -87,7 +87,7 @@ model		: 142
 model name	: Intel(R) Core(TM) i7-7500U CPU @ 2.70GHz
 stepping	: 9
 microcode	: 0x8e
-cpu MHz		: 2898.678
+cpu MHz		: 600.046
 cache size	: 4096 KB
 physical id	: 0
 siblings	: 4
