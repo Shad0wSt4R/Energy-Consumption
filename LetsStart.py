@@ -7,7 +7,7 @@ import keyboard
 def returnNth(lst, n):
 	return lst[::n]
 
-process = os.popen('top -b -n 1 | grep brandon > show_top.txt')
+process = os.popen('top -b -n 1 | grep $USER > show_top.txt')
 
 
 with open('show_top.txt') as f:
@@ -31,8 +31,4 @@ pidList = [x.strip("\n") for x in pidList]
 pidList = [x.split(None, 2) for x in pidList]
 del pidList[0]
 print(pidList)
-
-
-
-
 
