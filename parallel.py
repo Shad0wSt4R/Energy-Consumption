@@ -1,7 +1,6 @@
 import psutil
 import sys
 import math
-import random
 from concurrent.futures import ThreadPoolExecutor
 import subprocess
 from bs4 import BeautifulSoup as soup
@@ -75,3 +74,4 @@ if __name__ == "__main__":
 	diff_mwh = abs(mwh_new - mwh)
 	results = findmean(results, diff_mwh)
 	#print(results)
+input("Press Enter")
