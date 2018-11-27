@@ -1,6 +1,3 @@
-
-#Grabs the top 8 processes and then scatters them across nodes
-#The nodes need to be divisible by two and no greater than the amount of processes
 import psutil
 import sys
 import math
