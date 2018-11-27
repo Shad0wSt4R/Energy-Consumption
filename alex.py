@@ -41,13 +41,19 @@ def process(p):
 				results[name].append(cpu_percent)
 			else:
 				results[name] = list([cpu_percent])
-			b= "Process: {}\nCPU: {}% Memory: {:2f}% Battery Used: {:0.2f}%\n".format(name, cpu_percent, p[0].memory_percent(),(battery.secsleft/p[1]))
+			b= "Process: {}\nCPU: {}% Memory: {:2f}%\n".format(name, cpu_percent, p[0].memory_percent())
 			print(b)
+
 		current_time = datetime.datetime.now().minute
+
 def findmean(results, diff_mwh):
 	for key, value in results.items():
 		average = sum(value)/float(len(value))
-		results[key] = (average/diff_mwh)*100
+		try:
+			results[key] = (average/diff_mwh)
+			print("{} used {} mWh".format(key, results[key]))
+		except ZeroDivisionError as e:
+			print("Power Consumption didnt change over time, unplug your charger")
 	return results
 
 
@@ -64,11 +70,11 @@ if __name__ == "__main__":
 	for i in psutil.process_iter():
 		future = executor.submit(process, (i,battery_life.secsleft, end_time))
 	executor.shutdown(True)
-	print(results)
+	#print(results)
 
 	process_gen_report = generateReport()
 	process_gen_report.wait()
 	time_new, per_new, mwh_new = runpowerreport()
 	diff_mwh = abs(mwh_new - mwh)
 	results = findmean(results, diff_mwh)
-	print(results)
+	#print(results)
