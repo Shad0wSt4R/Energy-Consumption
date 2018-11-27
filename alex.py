@@ -6,6 +6,23 @@ import sys
 import math
 import random
 from concurrent.futures import ThreadPoolExecutor
+import subprocess
+from bs4 import BeautifulSoup as soup
+
+def runpowerreport():
+	value = subprocess.Popen(['powercfg', '/batteryreport' ,'/output', 'test.html'])
+	value.wait()
+	file = open('test.html', 'r')
+	my_soup = soup(file, 'html.parser')
+	#result =  my_soup.findAll("tr", {"class": "odd dc 30"})[0]
+	result = my_soup.findAll('table')[2].findAll('tr')[-1].findAll('td')
+	time = result[0].findAll('span', {"class":"time"})[0].text
+	percent = int(result[-2].text.split()[0])
+	mwh = int(result[-1].text.split()[0].replace(',', ''))
+	print(time)
+	print(percent)
+	print(mwh)
+
 def process(p):
 	batt_start = psutil.sensors_battery().secsleft
 	for i in range(5):
@@ -25,5 +42,6 @@ def process(p):
 if __name__ == "__main__":
 	executor = ThreadPoolExecutor()
 	battery_life = psutil.sensors_battery()
-	for i in psutil.process_iter():
-		executor.submit(process, (i,battery_life.secsleft))
+	runpowerreport()
+	#for i in psutil.process_iter():
+		#executor.submit(process, (i,battery_life.secsleft))
